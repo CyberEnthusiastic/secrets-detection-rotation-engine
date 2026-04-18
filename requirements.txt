@@ -1,0 +1,2 @@
+# Secrets Detection & Rotation Engine has zero runtime dependencies.
+# Uses only Python 3.8+ stdlib (re, json, math, pathlib, subprocess, dataclasses).

@@ -1,0 +1,37 @@
+============================================================
+  Secrets Detection & Rotation Engine v1.0
+============================================================
+[*] Total secrets  : 7
+[*] By severity    : {'CRITICAL': 3, 'HIGH': 3, 'MEDIUM': 1, 'LOW': 0}
+[*] By provider    : {'aws': 1, 'github': 1, 'openai': 1, 'google': 1, 'generic': 3}
+
+[CRITICAL] GitHub PAT (classic)  (provider: github)
+   samples\leaky_config.py:10  (entropy=5.17, risk=87.0)
+   > ghp_1234567890abcdefghijklmnopqrstuvwxyz
+
+[HIGH] OpenAI API Key  (provider: openai)
+   samples\leaky_config.py:13  (entropy=5.34, risk=79.0)
+   > sk-abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPqrstuv
+
+[HIGH] Google API Key  (provider: google)
+   samples\leaky_config.py:20  (entropy=5.13, risk=79.0)
+   > AIzaSyD_abcdefghijklmnopqrstuvwxyz12345
+
+[CRITICAL] AWS Access Key ID  (provider: aws)
+   samples\leaky_config.py:6  (entropy=1.5, risk=77.0)
+   > AKIAIOSFODNN7EXAMPLE
+
+[HIGH] Database URL with embedded password  (provider: generic)
+   samples\leaky_config.py:23  (entropy=4.39, risk=75.9)
+   > postgres://app:SuperSecret2025!@db.prod.example:5432/appdb
+
+[CRITICAL] Private key (PEM block)  (provider: generic)
+   samples\leaky_config.py:29  (entropy=3.38, risk=72.9)
+   > -----BEGIN RSA PRIVATE KEY-----
+
+[MEDIUM] JSON Web Token  (provider: generic)
+   samples\leaky_config.py:26  (entropy=5.28, risk=67.0)
+   > eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiaWF0IjoxNzEwMDAwMDAwfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+
+[*] JSON report: reports/secrets_report.json
+[*] HTML report: reports/secrets_report.html
